@@ -89,7 +89,7 @@ function App() {
             Search Results
           </h2>
           {/* Search results content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-5">
             {students.map((student, index) => (
               <StudentCard
                 key={index}
@@ -130,19 +130,19 @@ function StudentCard({ name, age, school, grade, gpa }) {
   )}&background=random`;
 
   return (
-    <div className="bg-white p-5 border border-gray-300 rounded-lg shadow-md">
-      <div className="flex items-center mb-3">
-        <img
-          src={avatarUrl}
-          alt={`${name}'s avatar`}
-          className="rounded-full mr-3"
-        />
+    <div className="bg-white p-5 border border-gray-300 rounded-lg shadow-md flex flex-row items-center">
+      <img
+        src={avatarUrl}
+        alt={`${name}'s avatar`}
+        className="rounded-full mr-6"
+      />
+      <div>
         <h3 className="text-lg font-bold">{name}</h3>
+        <p>Age: {age}</p>
+        <p>School: {school}</p>
+        <p>Grade: {grade}</p>
+        <p>GPA: {gpa}</p>
       </div>
-      <p>Age: {age}</p>
-      <p>School: {school}</p>
-      <p>Grade: {grade}</p>
-      <p>GPA: {gpa}</p>
     </div>
   );
 }
