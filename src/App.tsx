@@ -9,6 +9,7 @@ const students = [
     school: 'Springfield High',
     grade: '9th',
     gpa: 3.8,
+    lastLogin: 'Monday, April 28th 8:15AM EST',
   },
   {
     name: 'Bob Smith',
@@ -16,6 +17,7 @@ const students = [
     school: 'Springfield High',
     grade: '10th',
     gpa: 3.5,
+    lastLogin: 'Sunday, April 27th 2:30PM EST',
   },
   {
     name: 'Charlie Brown',
@@ -23,6 +25,7 @@ const students = [
     school: 'Springfield High',
     grade: '11th',
     gpa: 3.9,
+    lastLogin: 'Saturday, April 26th 9:45AM EST',
   },
   {
     name: 'Diana Prince',
@@ -30,6 +33,7 @@ const students = [
     school: 'Springfield High',
     grade: '12th',
     gpa: 4.0,
+    lastLogin: 'Friday, April 25th 4:00PM EST',
   },
   {
     name: 'Ethan Hunt',
@@ -37,6 +41,7 @@ const students = [
     school: 'Springfield High',
     grade: '9th',
     gpa: 3.7,
+    lastLogin: 'Thursday, April 24th 11:20AM EST',
   },
   {
     name: 'Fiona Gallagher',
@@ -44,6 +49,7 @@ const students = [
     school: 'Springfield High',
     grade: '10th',
     gpa: 3.6,
+    lastLogin: 'Wednesday, April 23rd 1:10PM EST',
   },
   {
     name: 'George Weasley',
@@ -51,6 +57,7 @@ const students = [
     school: 'Springfield High',
     grade: '11th',
     gpa: 3.4,
+    lastLogin: 'Tuesday, April 22nd 3:50PM EST',
   },
   {
     name: 'Hannah Montana',
@@ -58,6 +65,7 @@ const students = [
     school: 'Springfield High',
     grade: '12th',
     gpa: 3.8,
+    lastLogin: 'Monday, April 21st 8:40AM EST',
   },
   {
     name: 'Ian Malcolm',
@@ -65,6 +73,7 @@ const students = [
     school: 'Springfield High',
     grade: '9th',
     gpa: 3.9,
+    lastLogin: 'Sunday, April 20th 12:30PM EST',
   },
   {
     name: 'Jessica Jones',
@@ -72,6 +81,70 @@ const students = [
     school: 'Springfield High',
     grade: '10th',
     gpa: 3.7,
+    lastLogin: 'Saturday, April 19th 2:00PM EST',
+  },
+];
+
+const studentCourses = [
+  {
+    courseName: 'Introduction to Biology',
+    courseCode: 'BIO101',
+    instructor: 'Dr. Emily Carter',
+    averageGrade: 90,
+  },
+  {
+    courseName: 'Algebra II',
+    courseCode: 'MATH201',
+    instructor: 'Mr. John Smith',
+    averageGrade: 87,
+  },
+  {
+    courseName: 'World History',
+    courseCode: 'HIST102',
+    instructor: 'Ms. Sarah Johnson',
+    averageGrade: 95,
+  },
+  {
+    courseName: 'Chemistry Basics',
+    courseCode: 'CHEM101',
+    instructor: 'Dr. Alan Brown',
+    averageGrade: 85,
+  },
+  {
+    courseName: 'English Literature',
+    courseCode: 'ENG202',
+    instructor: 'Mrs. Laura White',
+    averageGrade: 92,
+  },
+  {
+    courseName: 'Physical Education',
+    courseCode: 'PE101',
+    instructor: 'Coach Mike Green',
+    averageGrade: 88,
+  },
+  {
+    courseName: 'Computer Science Basics',
+    courseCode: 'CS101',
+    instructor: 'Dr. Sophia Lee',
+    averageGrade: 94,
+  },
+  {
+    courseName: 'Art and Design',
+    courseCode: 'ART103',
+    instructor: 'Ms. Rachel Adams',
+    averageGrade: 80,
+  },
+  {
+    courseName: 'Physics I',
+    courseCode: 'PHYS101',
+    instructor: 'Dr. Mark Wilson',
+    averageGrade: 89,
+  },
+  {
+    courseName: 'Spanish Language',
+    courseCode: 'SPAN101',
+    instructor: 'Mr. Carlos Martinez',
+    averageGrade: 91,
   },
 ];
 
@@ -110,7 +183,7 @@ function App() {
           <h2 className="text-lg font-bold mb-3">
             Student Details
           </h2>
-          {/* Student detail content */}
+          <StudentDetail student={students[0]} />
         </section>
       </main>
 
@@ -146,3 +219,31 @@ function StudentCard({ name, age, school, grade, gpa }) {
     </div>
   );
 }
+
+// Student Detail Component
+// Contains the details of the student
+// Avatar, Name, Age, School, Grade, GPA
+// Call to action, Contact and Create a Log Entry
+function StudentDetail({ student }) {
+  return (
+    <div className="bg-white p-5 border border-gray-300 rounded-lg shadow-md">
+      <img
+        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
+          student.name
+        )}&background=random`}
+        alt={`${student.name}'s avatar`}
+        className="rounded-full mb-4"
+      />
+      <h3 className="text-lg font-bold">{student.name}</h3>
+      <p>Age: {student.age}</p>
+      <p>School: {student.school}</p>
+      <p>Grade: {student.grade}</p>
+      <p>GPA: {student.gpa}</p>
+      {/* Call to action buttons */}
+    </div>
+  );
+}
+
+// Student Course List Component
+// List of courses the student is enrolled in
+// Course Name, Course Code, Instructor, Average Grade
