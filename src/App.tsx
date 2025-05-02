@@ -105,12 +105,6 @@ const studentCourses = [
     averageGrade: 95,
   },
   {
-    courseName: 'Chemistry Basics',
-    courseCode: 'CHEM101',
-    instructor: 'Dr. Alan Brown',
-    averageGrade: 85,
-  },
-  {
     courseName: 'English Literature',
     courseCode: 'ENG202',
     instructor: 'Mrs. Laura White',
@@ -121,24 +115,6 @@ const studentCourses = [
     courseCode: 'PE101',
     instructor: 'Coach Mike Green',
     averageGrade: 88,
-  },
-  {
-    courseName: 'Computer Science Basics',
-    courseCode: 'CS101',
-    instructor: 'Dr. Sophia Lee',
-    averageGrade: 94,
-  },
-  {
-    courseName: 'Art and Design',
-    courseCode: 'ART103',
-    instructor: 'Ms. Rachel Adams',
-    averageGrade: 80,
-  },
-  {
-    courseName: 'Physics I',
-    courseCode: 'PHYS101',
-    instructor: 'Dr. Mark Wilson',
-    averageGrade: 89,
   },
   {
     courseName: 'Spanish Language',
@@ -226,20 +202,29 @@ function StudentCard({ name, age, school, grade, gpa }) {
 // Call to action, Contact and Create a Log Entry
 function StudentDetail({ student }) {
   return (
-    <div className="bg-white p-5 border border-gray-300 rounded-lg shadow-md">
-      <img
-        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
-          student.name
-        )}&background=random`}
-        alt={`${student.name}'s avatar`}
-        className="rounded-full mb-4"
-      />
-      <h3 className="text-lg font-bold">{student.name}</h3>
-      <p>Age: {student.age}</p>
-      <p>School: {student.school}</p>
-      <p>Grade: {student.grade}</p>
-      <p>GPA: {student.gpa}</p>
+    <div className="flex flex-col bg-white p-5 border border-gray-300 rounded-lg shadow-md">
+      <div className="flex flex-row gap-5 items-center">
+        <div className="flex">
+          <img
+            src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
+              student.name
+            )}&background=random`}
+            alt={`${student.name}'s avatar`}
+            className="rounded-full mb-4"
+          />
+        </div>
+        <div className="flex flex-col">
+          <h3 className="text-lg font-bold">
+            {student.name}
+          </h3>
+          <p>Age: {student.age}</p>
+          <p>School: {student.school}</p>
+          <p>Grade: {student.grade}</p>
+          <p>GPA: {student.gpa}</p>
+        </div>
+      </div>
       {/* Call to action buttons */}
+      <StudentCourseList courses={studentCourses} />
     </div>
   );
 }
@@ -247,3 +232,32 @@ function StudentDetail({ student }) {
 // Student Course List Component
 // List of courses the student is enrolled in
 // Course Name, Course Code, Instructor, Average Grade
+function StudentCourseList({ courses }) {
+  return (
+    <div className="bg-white py-5">
+      <h3 className="text-lg font-bold mb-3">Courses</h3>
+      <ul className="space-y-3">
+        {courses.map((course, index) => (
+          <li
+            key={index}
+            className="flex flex-row justify-between items-top pb-4"
+          >
+            <div className="flex flex-col">
+              <span className="font-bold">
+                {course.courseName}
+              </span>
+              <span>Code: {course.courseCode}</span>
+              <span>Instructor: {course.instructor}</span>
+            </div>
+            <div className="flex flex-col items-end">
+              <span>Average Grade:</span>
+              <span className="text-2xl font-semibold">
+                {course.averageGrade}%
+              </span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
