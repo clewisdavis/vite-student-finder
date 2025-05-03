@@ -237,14 +237,18 @@ function StudentDetail({ student }) {
           <h3 className="text-lg font-bold">
             {student.name}
           </h3>
-          <p>Age: {student.age}</p>
-          <p>School: {student.school}</p>
-          <p>Grade: {student.grade}</p>
-          <p>GPA: {student.gpa}</p>
-          <p>Location: {student.location}</p>
-          <p>
-            Preferred Contact: {student.preferredContact}
-          </p>
+          <div className="flex flex-row gap-10">
+            <div className="flex flex-col text-sm">
+              <p>Age: {student.age}</p>
+              <p>School: {student.school}</p>
+              <p>Grade: {student.grade}</p>
+            </div>
+            <div className="flex flex-col text-sm">
+              <p>GPA: {student.gpa}</p>
+              <p>Location: {student.location}</p>
+              <p>Contact: {student.preferredContact}</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="flex flex-row gap-5 items-center pb-5">
