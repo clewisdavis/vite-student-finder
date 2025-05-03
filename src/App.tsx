@@ -196,7 +196,7 @@ export default App;
 function StudentCard({ name, age, school, grade, gpa }) {
   const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(
     name
-  )}&background=random`;
+  )}`;
 
   return (
     <div className="bg-white p-5 border border-gray-300 rounded-lg shadow-md flex flex-row items-center">
@@ -228,7 +228,7 @@ function StudentDetail({ student }) {
           <img
             src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
               student.name
-            )}&background=random`}
+            )}`}
             alt={`${student.name}'s avatar`}
             className="rounded-full mb-4"
           />
