@@ -10,6 +10,8 @@ const students = [
     grade: '9th',
     gpa: 3.8,
     lastLogin: 'Monday, April 28th 8:15AM EST',
+    preferredContact: '910-326-3567',
+    location: 'Durham, NC',
   },
   {
     name: 'Bob Smith',
@@ -18,6 +20,8 @@ const students = [
     grade: '10th',
     gpa: 3.5,
     lastLogin: 'Sunday, April 27th 2:30PM EST',
+    preferredContact: '919-555-1234',
+    location: 'Raleigh, NC',
   },
   {
     name: 'Charlie Brown',
@@ -26,6 +30,8 @@ const students = [
     grade: '11th',
     gpa: 3.9,
     lastLogin: 'Saturday, April 26th 9:45AM EST',
+    preferredContact: '984-123-4567',
+    location: 'Charlotte, NC',
   },
   {
     name: 'Diana Prince',
@@ -34,6 +40,8 @@ const students = [
     grade: '12th',
     gpa: 4.0,
     lastLogin: 'Friday, April 25th 4:00PM EST',
+    preferredContact: '910-987-6543',
+    location: 'Greensboro, NC',
   },
   {
     name: 'Ethan Hunt',
@@ -42,6 +50,8 @@ const students = [
     grade: '9th',
     gpa: 3.7,
     lastLogin: 'Thursday, April 24th 11:20AM EST',
+    preferredContact: '919-222-3333',
+    location: 'Wilmington, NC',
   },
   {
     name: 'Fiona Gallagher',
@@ -50,6 +60,8 @@ const students = [
     grade: '10th',
     gpa: 3.6,
     lastLogin: 'Wednesday, April 23rd 1:10PM EST',
+    preferredContact: '984-444-5555',
+    location: 'Asheville, NC',
   },
   {
     name: 'George Weasley',
@@ -58,6 +70,8 @@ const students = [
     grade: '11th',
     gpa: 3.4,
     lastLogin: 'Tuesday, April 22nd 3:50PM EST',
+    preferredContact: '910-666-7777',
+    location: 'Cary, NC',
   },
   {
     name: 'Hannah Montana',
@@ -66,6 +80,8 @@ const students = [
     grade: '12th',
     gpa: 3.8,
     lastLogin: 'Monday, April 21st 8:40AM EST',
+    preferredContact: '919-888-9999',
+    location: 'Chapel Hill, NC',
   },
   {
     name: 'Ian Malcolm',
@@ -74,6 +90,8 @@ const students = [
     grade: '9th',
     gpa: 3.9,
     lastLogin: 'Sunday, April 20th 12:30PM EST',
+    preferredContact: '984-000-1111',
+    location: 'Fayetteville, NC',
   },
   {
     name: 'Jessica Jones',
@@ -82,6 +100,8 @@ const students = [
     grade: '10th',
     gpa: 3.7,
     lastLogin: 'Saturday, April 19th 2:00PM EST',
+    preferredContact: '910-222-3333',
+    location: 'High Point, NC',
   },
 ];
 
@@ -203,7 +223,7 @@ function StudentCard({ name, age, school, grade, gpa }) {
 function StudentDetail({ student }) {
   return (
     <div className="flex flex-col bg-white p-5 border border-gray-300 rounded-lg shadow-md">
-      <div className="flex flex-row gap-5 items-center">
+      <div className="flex flex-row gap-5 items-center pb-5">
         <div className="flex">
           <img
             src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
@@ -221,9 +241,21 @@ function StudentDetail({ student }) {
           <p>School: {student.school}</p>
           <p>Grade: {student.grade}</p>
           <p>GPA: {student.gpa}</p>
+          <p>Location: {student.location}</p>
+          <p>
+            Preferred Contact: {student.preferredContact}
+          </p>
         </div>
       </div>
-      {/* Call to action buttons */}
+      <div className="flex flex-row gap-5 items-center pb-5">
+        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+          Email Student
+        </button>
+        <button className="bg-gray-500 text-white font-bold py-2 px-4 rounded">
+          Create Log Entry
+        </button>
+      </div>
+      <hr />
       <StudentCourseList courses={studentCourses} />
     </div>
   );
