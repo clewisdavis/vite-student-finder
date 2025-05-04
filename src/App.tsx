@@ -207,10 +207,12 @@ function StudentCard({ name, age, school, grade, gpa }) {
       />
       <div>
         <h3 className="text-lg font-bold">{name}</h3>
-        <p>Age: {age}</p>
-        <p>School: {school}</p>
-        <p>Grade: {grade}</p>
-        <p>GPA: {gpa}</p>
+        <div className="text-sm">
+          <p>Age: {age}</p>
+          <p>School: {school}</p>
+          <p>Grade: {grade}</p>
+          <p>GPA: {gpa}</p>
+        </div>
       </div>
     </div>
   );
