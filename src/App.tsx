@@ -1,5 +1,6 @@
 import { Header } from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
+import { Button } from '@/components/ui/button';
 
 // Fake data for StudentCard component
 const students = [
@@ -254,12 +255,10 @@ function StudentDetail({ student }) {
         </div>
       </div>
       <div className="flex flex-row gap-5 items-center pb-5">
-        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
-          Email Student
-        </button>
-        <button className="bg-gray-500 text-white font-bold py-2 px-4 rounded">
+        <Button>Email Student</Button>
+        <Button variant="secondary">
           Create Log Entry
-        </button>
+        </Button>
       </div>
       <hr />
       <StudentCourseList courses={studentCourses} />
