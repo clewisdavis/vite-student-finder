@@ -9,6 +9,12 @@ export function useTheme() {
   );
 
   useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove(
+      theme === 'dark' ? 'light' : 'dark'
+    );
+    root.classList.add(theme);
+
     const mediaQuery = window.matchMedia(
       '(prefers-color-scheme: dark)'
     );
@@ -22,7 +28,7 @@ export function useTheme() {
         'change',
         handleChange
       );
-  }, []);
+  }, [theme]);
 
-  return { theme };
+  return { theme, setTheme };
 }

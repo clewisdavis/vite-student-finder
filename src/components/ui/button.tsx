@@ -57,8 +57,8 @@ function Button({
       className={cn(
         buttonVariants({ variant, size, className }),
         theme === 'dark'
-          ? 'dark-theme-class'
-          : 'light-theme-class'
+          ? 'dark:bg-primary dark:text-white'
+          : 'bg-primary text-white'
       )}
       {...props}
     />
