@@ -255,7 +255,7 @@ function StudentDetail({ student }) {
         </div>
       </div>
       <div className="flex flex-row gap-5 items-center pb-5">
-        <Button>Email Student</Button>
+        <Button variant="default">Email Student</Button>
         <Button variant="secondary">
           Create Log Entry
         </Button>

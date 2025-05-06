@@ -14,15 +14,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary text-white hover:bg-primary/90',
+          'bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white',
         destructive:
-          'bg-red-500 text-white hover:bg-red-600',
+          'bg-red-500 text-white hover:bg-red-600 dark:bg-red-600',
         outline:
-          'border border-primary text-primary hover:bg-primary/10',
+          'border border-primary text-primary hover:bg-primary/10 dark:border-primary dark:text-primary',
         secondary:
-          'bg-secondary text-white hover:bg-secondary/90',
-        ghost: 'text-primary hover:bg-primary/10',
-        link: 'text-primary underline hover:text-primary/90',
+          'bg-secondary text-white hover:bg-secondary/90 dark:bg-secondary',
+        ghost:
+          'text-primary hover:bg-primary/10 dark:text-primary',
+        link: 'text-primary underline hover:text-primary/90 dark:text-primary',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',
@@ -48,17 +49,13 @@ function Button({
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
   }) {
-  const { theme } = useTheme();
   const Comp = asChild ? Slot : 'button';
 
   return (
     <Comp
       data-slot="button"
       className={cn(
-        buttonVariants({ variant, size, className }),
-        theme === 'dark'
-          ? 'dark:bg-primary dark:text-white'
-          : 'bg-primary text-white'
+        buttonVariants({ variant, size, className })
       )}
       {...props}
     />
