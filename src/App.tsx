@@ -1,6 +1,7 @@
 import { Header } from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/lib/theme';
 
 // Fake data for StudentCard component
 const students = [
@@ -146,6 +147,8 @@ const studentCourses = [
 ];
 
 function App() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <div className="grid grid-rows-[auto_1fr_auto] h-screen">
       <Header />
@@ -256,9 +259,7 @@ function StudentDetail({ student }) {
       </div>
       <div className="flex flex-row gap-5 items-center pb-5">
         <Button variant="default">Email Student</Button>
-        <Button variant="secondary">
-          Create Log Entry
-        </Button>
+        <Button variant="outline">Create Log Entry</Button>
       </div>
       <hr />
       <StudentCourseList courses={studentCourses} />
