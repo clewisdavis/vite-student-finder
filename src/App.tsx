@@ -1,10 +1,22 @@
 import { Header } from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
 import { Button } from '@/components/ui/button';
-import { useTheme } from '@/lib/theme';
+import { useState } from 'react';
+
+// Define the Student type
+interface Student {
+  name: string;
+  age: number;
+  school: string;
+  grade: string;
+  gpa: number;
+  lastLogin: string;
+  preferredContact: string;
+  location: string;
+}
 
 // Fake data for StudentCard component
-const students = [
+const students: Student[] = [
   {
     name: 'Alice Johnson',
     age: 14,
@@ -147,7 +159,11 @@ const studentCourses = [
 ];
 
 function App() {
-  const { theme, setTheme } = useTheme();
+  // Removed unused theme and setTheme variables
+
+  // State to track the selected student
+  const [selectedStudent, setSelectedStudent] =
+    useState<Student | null>(null);
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] h-screen">
@@ -161,17 +177,26 @@ function App() {
           <h2 className="text-lg font-bold mb-3">
             Search Results
           </h2>
-          {/* Search results content */}
           <div className="grid grid-cols-1 md:grid-cols-1 gap-5">
             {students.map((student, index) => (
-              <StudentCard
+              <div
                 key={index}
-                name={student.name}
-                age={student.age}
-                school={student.school}
-                grade={student.grade}
-                gpa={student.gpa}
-              />
+                onClick={() => setSelectedStudent(student)}
+                className="cursor-pointer"
+              >
+                <StudentCard
+                  name={student.name}
+                  age={student.age}
+                  school={student.school}
+                  grade={student.grade}
+                  gpa={student.gpa}
+                  lastLogin={student.lastLogin}
+                  preferredContact={
+                    student.preferredContact
+                  }
+                  location={student.location}
+                />
+              </div>
             ))}
           </div>
         </section>
@@ -183,7 +208,11 @@ function App() {
           <h2 className="text-lg font-bold mb-3">
             Student Details
           </h2>
-          <StudentDetail student={students[0]} />
+          {selectedStudent ? (
+            <StudentDetail student={selectedStudent} />
+          ) : (
+            <p>Select a student to view their details.</p>
+          )}
         </section>
       </main>
 
@@ -197,7 +226,16 @@ export default App;
 // Student Card Component
 // Name, Age, School, Grade, GPA
 // Avatar of the student
-function StudentCard({ name, age, school, grade, gpa }) {
+function StudentCard({
+  name,
+  age,
+  school,
+  grade,
+  gpa,
+  lastLogin,
+  preferredContact,
+  location,
+}: Student) {
   const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(
     name
   )}`;
@@ -216,6 +254,9 @@ function StudentCard({ name, age, school, grade, gpa }) {
           <p>School: {school}</p>
           <p>Grade: {grade}</p>
           <p>GPA: {gpa}</p>
+          <p>Last Login: {lastLogin}</p>
+          <p>Contact: {preferredContact}</p>
+          <p>Location: {location}</p>
         </div>
       </div>
     </div>
@@ -226,7 +267,7 @@ function StudentCard({ name, age, school, grade, gpa }) {
 // Contains the details of the student
 // Avatar, Name, Age, School, Grade, GPA
 // Call to action, Contact and Create a Log Entry
-function StudentDetail({ student }) {
+function StudentDetail({ student }: { student: Student }) {
   return (
     <div className="flex flex-col bg-white p-5 border border-gray-300 rounded-lg shadow-md">
       <div className="flex flex-row gap-5 items-center pb-5">
@@ -270,7 +311,11 @@ function StudentDetail({ student }) {
 // Student Course List Component
 // List of courses the student is enrolled in
 // Course Name, Course Code, Instructor, Average Grade
-function StudentCourseList({ courses }) {
+function StudentCourseList({
+  courses,
+}: {
+  courses: typeof studentCourses;
+}) {
   return (
     <div className="bg-white py-5">
       <h3 className="text-lg font-bold mb-3">Courses</h3>
