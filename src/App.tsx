@@ -2,8 +2,9 @@ import { Header } from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import mockCourses from './mockCourses';
 
-// Define the Student type
+// Updated Student type to include courses
 interface Student {
   name: string;
   age: number;
@@ -13,6 +14,7 @@ interface Student {
   lastLogin: string;
   preferredContact: string;
   location: string;
+  courses: string[]; // Array of course codes
 }
 
 // Fake data for StudentCard component
@@ -26,6 +28,7 @@ const students: Student[] = [
     lastLogin: 'Monday, April 28th 8:15AM EST',
     preferredContact: '910-326-3567',
     location: 'Durham, NC',
+    courses: ['BIO101', 'MATH101', 'HIST101'],
   },
   {
     name: 'Bob Smith',
@@ -36,6 +39,7 @@ const students: Student[] = [
     lastLogin: 'Sunday, April 27th 2:30PM EST',
     preferredContact: '919-555-1234',
     location: 'Raleigh, NC',
+    courses: ['CHEM201', 'MATH201', 'ENG201'],
   },
   {
     name: 'Charlie Brown',
@@ -46,6 +50,7 @@ const students: Student[] = [
     lastLogin: 'Saturday, April 26th 9:45AM EST',
     preferredContact: '984-123-4567',
     location: 'Charlotte, NC',
+    courses: ['PHYS301', 'MATH301', 'ENG301'],
   },
   {
     name: 'Diana Prince',
@@ -56,6 +61,7 @@ const students: Student[] = [
     lastLogin: 'Friday, April 25th 4:00PM EST',
     preferredContact: '910-987-6543',
     location: 'Greensboro, NC',
+    courses: ['BIO401', 'MATH401', 'ENG401'],
   },
   {
     name: 'Ethan Hunt',
@@ -66,6 +72,7 @@ const students: Student[] = [
     lastLogin: 'Thursday, April 24th 11:20AM EST',
     preferredContact: '919-222-3333',
     location: 'Wilmington, NC',
+    courses: ['BIO101', 'ART101', 'HE101'],
   },
   {
     name: 'Fiona Gallagher',
@@ -76,6 +83,7 @@ const students: Student[] = [
     lastLogin: 'Wednesday, April 23rd 1:10PM EST',
     preferredContact: '984-444-5555',
     location: 'Asheville, NC',
+    courses: ['CHEM201', 'ENG202', 'SPAN101'],
   },
   {
     name: 'George Weasley',
@@ -86,6 +94,7 @@ const students: Student[] = [
     lastLogin: 'Tuesday, April 22nd 3:50PM EST',
     preferredContact: '910-666-7777',
     location: 'Cary, NC',
+    courses: ['PHYS301', 'CS101', 'SPAN201'],
   },
   {
     name: 'Hannah Montana',
@@ -96,6 +105,7 @@ const students: Student[] = [
     lastLogin: 'Monday, April 21st 8:40AM EST',
     preferredContact: '919-888-9999',
     location: 'Chapel Hill, NC',
+    courses: ['BIO401', 'MATH401', 'CS401'],
   },
   {
     name: 'Ian Malcolm',
@@ -106,6 +116,7 @@ const students: Student[] = [
     lastLogin: 'Sunday, April 20th 12:30PM EST',
     preferredContact: '984-000-1111',
     location: 'Fayetteville, NC',
+    courses: ['BIO101', 'MATH101', 'HIST101'],
   },
   {
     name: 'Jessica Jones',
@@ -116,45 +127,7 @@ const students: Student[] = [
     lastLogin: 'Saturday, April 19th 2:00PM EST',
     preferredContact: '910-222-3333',
     location: 'High Point, NC',
-  },
-];
-
-const studentCourses = [
-  {
-    courseName: 'Introduction to Biology',
-    courseCode: 'BIO101',
-    instructor: 'Dr. Emily Carter',
-    averageGrade: 90,
-  },
-  {
-    courseName: 'Algebra II',
-    courseCode: 'MATH201',
-    instructor: 'Mr. John Smith',
-    averageGrade: 87,
-  },
-  {
-    courseName: 'World History',
-    courseCode: 'HIST102',
-    instructor: 'Ms. Sarah Johnson',
-    averageGrade: 95,
-  },
-  {
-    courseName: 'English Literature',
-    courseCode: 'ENG202',
-    instructor: 'Mrs. Laura White',
-    averageGrade: 92,
-  },
-  {
-    courseName: 'Physical Education',
-    courseCode: 'PE101',
-    instructor: 'Coach Mike Green',
-    averageGrade: 88,
-  },
-  {
-    courseName: 'Spanish Language',
-    courseCode: 'SPAN101',
-    instructor: 'Mr. Carlos Martinez',
-    averageGrade: 91,
+    courses: ['CHEM201', 'ENG202', 'FR101'],
   },
 ];
 
@@ -189,12 +162,6 @@ function App() {
                   age={student.age}
                   school={student.school}
                   grade={student.grade}
-                  gpa={student.gpa}
-                  lastLogin={student.lastLogin}
-                  preferredContact={
-                    student.preferredContact
-                  }
-                  location={student.location}
                 />
               </div>
             ))}
@@ -226,16 +193,21 @@ export default App;
 // Student Card Component
 // Name, Age, School, Grade, GPA
 // Avatar of the student
+// Updated StudentCard component to include `courses` and removed unused properties
+// Updated StudentCard to accept only required props
+interface StudentCardProps {
+  name: string;
+  age: number;
+  school: string;
+  grade: string;
+}
+
 function StudentCard({
   name,
   age,
   school,
   grade,
-  gpa,
-  lastLogin,
-  preferredContact,
-  location,
-}: Student) {
+}: StudentCardProps) {
   const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(
     name
   )}`;
@@ -253,10 +225,6 @@ function StudentCard({
           <p>Age: {age}</p>
           <p>School: {school}</p>
           <p>Grade: {grade}</p>
-          <p>GPA: {gpa}</p>
-          <p>Last Login: {lastLogin}</p>
-          <p>Contact: {preferredContact}</p>
-          <p>Location: {location}</p>
         </div>
       </div>
     </div>
@@ -268,6 +236,11 @@ function StudentCard({
 // Avatar, Name, Age, School, Grade, GPA
 // Call to action, Contact and Create a Log Entry
 function StudentDetail({ student }: { student: Student }) {
+  // Filter courses for the selected student
+  const filteredCourses = mockCourses.filter((course) =>
+    student.courses.includes(course.courseCode)
+  );
+
   return (
     <div className="flex flex-col bg-white p-5 border border-gray-300 rounded-lg shadow-md">
       <div className="flex flex-row gap-5 items-center pb-5">
@@ -303,7 +276,7 @@ function StudentDetail({ student }: { student: Student }) {
         <Button variant="outline">Create Log Entry</Button>
       </div>
       <hr />
-      <StudentCourseList courses={studentCourses} />
+      <StudentCourseList courses={filteredCourses} />
     </div>
   );
 }
@@ -314,7 +287,7 @@ function StudentDetail({ student }: { student: Student }) {
 function StudentCourseList({
   courses,
 }: {
-  courses: typeof studentCourses;
+  courses: typeof mockCourses;
 }) {
   return (
     <div className="bg-white py-5">
