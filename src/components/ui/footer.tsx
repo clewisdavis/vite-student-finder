@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white text-center p-5">
+    <footer className="bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark text-center p-5 border-t border-border-light dark:border-border-dark">
       <p className="mb-2">Student Finder</p>
       <nav>
         <ul className="flex justify-center space-x-4">

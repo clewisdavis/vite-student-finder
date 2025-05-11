@@ -4,7 +4,7 @@ import { Filter } from 'lucide-react';
 
 export function Header() {
   return (
-    <header className="bg-gray-100 py-5 px-4">
+    <header className="bg-background-light dark:bg-background-dark py-5 px-4 text-text-primary-light dark:text-text-primary-dark border border-border-light dark:border-border-dark">
       <div className="flex items-center justify-center">
         <Input
           type="text"

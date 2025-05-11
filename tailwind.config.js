@@ -54,6 +54,10 @@ module.exports = {
           light: "#3B82F6", // Light mode info color
           dark: "#1E40AF", // Dark mode info color
         },
+        border: {
+          light: "#E5E7EB", // Light mode border color
+          dark: "#374151", // Dark mode border color
+        },
       },
     },
   },

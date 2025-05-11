@@ -145,7 +145,7 @@ function App() {
       <main className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
         <section
           id="search-results"
-          className="bg-white p-5 border border-gray-300 rounded-lg bg-yellow-50"
+          className="bg-surface-light dark:bg-surface-dark p-5 border border-border-light dark:border-border-dark rounded-lg"
         >
           <h2 className="text-lg font-bold mb-3">
             Search Results
@@ -170,7 +170,7 @@ function App() {
 
         <section
           id="student-detail"
-          className="bg-white p-5 border border-gray-300"
+          className="bg-surface-light dark:bg-surface-dark p-5 border border-border-light dark:border-border-dark rounded-lg"
         >
           <h2 className="text-lg font-bold mb-3">
             Student Details
@@ -213,7 +213,7 @@ function StudentCard({
   )}`;
 
   return (
-    <div className="bg-white p-5 border border-gray-300 rounded-lg shadow-md flex flex-row items-center hover:bg-blue-50 transition-colors">
+    <div className="bg-surface-light dark:bg-surface-dark p-5 border border-border-light dark:border-border-dark rounded-lg shadow-md flex flex-row items-center hover:bg-accent-light dark:hover:bg-accent-dark transition-colors">
       <img
         src={avatarUrl}
         alt={`${name}'s avatar`}
