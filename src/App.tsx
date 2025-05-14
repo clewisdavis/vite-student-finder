@@ -145,7 +145,7 @@ function App() {
       <main className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
         <section
           id="search-results"
-          className="bg-surface-light dark:bg-surface-dark p-5 border border-border-light dark:border-border-dark rounded-lg"
+          className="bg-surface-light p-5 border border-gray-300 rounded-lg"
         >
           <h2 className="text-lg font-bold mb-3">
             Search Results
@@ -170,7 +170,7 @@ function App() {
 
         <section
           id="student-detail"
-          className="bg-surface-light dark:bg-surface-dark p-5 border border-border-light dark:border-border-dark rounded-lg"
+          className="bg-surface-light p-5 border border-gray-300 rounded-lg"
         >
           <h2 className="text-lg font-bold mb-3">
             Student Details
@@ -213,7 +213,7 @@ function StudentCard({
   )}`;
 
   return (
-    <div className="bg-surface-light dark:bg-surface-dark p-5 border border-border-light dark:border-border-dark rounded-lg shadow-md flex flex-row items-center hover:bg-accent-light dark:hover:bg-accent-dark transition-colors">
+    <div className="p-5 border border-gray-300 rounded-lg shadow-md flex flex-row items-center hover:bg-blue-50 transition-colors">
       <img
         src={avatarUrl}
         alt={`${name}'s avatar`}
@@ -242,7 +242,7 @@ function StudentDetail({ student }: { student: Student }) {
   );
 
   return (
-    <div className="flex flex-col bg-white p-5 border border-gray-300 rounded-lg shadow-md">
+    <div className="flex flex-col border border-gray-200 bg-white p-5 rounded-lg shadow-md">
       <div className="flex flex-row gap-5 items-center pb-5">
         <div className="flex">
           <img
