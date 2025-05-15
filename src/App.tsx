@@ -132,7 +132,16 @@ const students: Student[] = [
 ];
 
 function App() {
-  // Removed unused theme and setTheme variables
+  // State to track search results
+  const [searchQuery, setSearchQuery] =
+    useState<string>('');
+
+  // Filter students based on search query
+  const filteredStudents = students.filter((student) =>
+    student.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
 
   // State to track the selected student
   const [selectedStudent, setSelectedStudent] =
@@ -140,7 +149,10 @@ function App() {
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] h-screen">
-      <Header />
+      <Header
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
 
       <main className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
         <section
@@ -151,7 +163,7 @@ function App() {
             Search Results
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-5">
-            {students.map((student, index) => (
+            {filteredStudents.map((student, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedStudent(student)}

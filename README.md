@@ -20,7 +20,7 @@ The objective of the Student Finder application is to provide teachers with a st
 
 ### Use Cases
 
-1. **Search for a Student by Name**
+1. **Search for a Student by First and Last Name**
 
    - **Actor:** Teacher
    - **Description:** The teacher searches for a student by name to view their profile.
