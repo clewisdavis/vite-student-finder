@@ -163,20 +163,28 @@ function App() {
             Search Results
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-5">
-            {filteredStudents.map((student, index) => (
-              <div
-                key={index}
-                onClick={() => setSelectedStudent(student)}
-                className="cursor-pointer"
-              >
-                <StudentCard
-                  name={student.name}
-                  age={student.age}
-                  school={student.school}
-                  grade={student.grade}
-                />
-              </div>
-            ))}
+            {filteredStudents.length > 0 ? (
+              filteredStudents.map((student, index) => (
+                <div
+                  key={index}
+                  onClick={() =>
+                    setSelectedStudent(student)
+                  }
+                  className="cursor-pointer"
+                >
+                  <StudentCard
+                    name={student.name}
+                    age={student.age}
+                    school={student.school}
+                    grade={student.grade}
+                  />
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-500">
+                No students found.
+              </p>
+            )}
           </div>
         </section>
 
