@@ -33,7 +33,7 @@ const students: Student[] = [
   {
     name: 'Bob Smith',
     age: 15,
-    school: 'Springfield High',
+    school: 'Apex High',
     grade: '10th',
     gpa: 3.5,
     lastLogin: 'Sunday, April 27th 2:30PM EST',
@@ -44,7 +44,7 @@ const students: Student[] = [
   {
     name: 'Charlie Brown',
     age: 16,
-    school: 'Springfield High',
+    school: 'Holly Grove High',
     grade: '11th',
     gpa: 3.9,
     lastLogin: 'Saturday, April 26th 9:45AM EST',
@@ -66,7 +66,7 @@ const students: Student[] = [
   {
     name: 'Ethan Hunt',
     age: 14,
-    school: 'Springfield High',
+    school: 'Apex High',
     grade: '9th',
     gpa: 3.7,
     lastLogin: 'Thursday, April 24th 11:20AM EST',
@@ -77,7 +77,7 @@ const students: Student[] = [
   {
     name: 'Fiona Gallagher',
     age: 15,
-    school: 'Springfield High',
+    school: 'Holly Grove High',
     grade: '10th',
     gpa: 3.6,
     lastLogin: 'Wednesday, April 23rd 1:10PM EST',
@@ -99,7 +99,7 @@ const students: Student[] = [
   {
     name: 'Hannah Montana',
     age: 17,
-    school: 'Springfield High',
+    school: 'Apex High',
     grade: '12th',
     gpa: 3.8,
     lastLogin: 'Monday, April 21st 8:40AM EST',
@@ -110,7 +110,7 @@ const students: Student[] = [
   {
     name: 'Ian Malcolm',
     age: 14,
-    school: 'Springfield High',
+    school: 'Holly Grove High',
     grade: '9th',
     gpa: 3.9,
     lastLogin: 'Sunday, April 20th 12:30PM EST',
@@ -137,10 +137,14 @@ function App() {
     useState<string>('');
 
   // Filter students based on search query
-  const filteredStudents = students.filter((student) =>
-    student.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase())
+  const filteredStudents = students.filter(
+    (student) =>
+      student.name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      student.school
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
   );
 
   // State to track the selected student
@@ -154,10 +158,10 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
 
-      <main className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5 min-h-0">
         <section
           id="search-results"
-          className="bg-surface-light p-5 border border-gray-300 rounded-lg"
+          className="bg-surface-light p-5 border border-gray-300 rounded-lg overflow-y-auto min-h-0"
         >
           <h2 className="text-lg font-bold mb-3">
             Search Results
@@ -190,7 +194,7 @@ function App() {
 
         <section
           id="student-detail"
-          className="bg-surface-light p-5 border border-gray-300 rounded-lg"
+          className="bg-surface-light p-5 border border-gray-300 rounded-lg overflow-y-auto min-h-0"
         >
           <h2 className="text-lg font-bold mb-3">
             Student Details
@@ -262,7 +266,7 @@ function StudentDetail({ student }: { student: Student }) {
   );
 
   return (
-    <div className="flex flex-col border border-gray-200 bg-white p-5 rounded-lg shadow-md">
+    <div className="flex flex-col bg-white p-0 rounded-lg">
       <div className="flex flex-row gap-5 items-center pb-5">
         <div className="flex">
           <img
