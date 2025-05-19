@@ -3,6 +3,14 @@ import Footer from '@/components/ui/footer';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import mockCourses from './mockCourses';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from '@/components/ui/dialog';
 
 // Updated Student type to include courses
 interface Student {
@@ -296,7 +304,48 @@ function StudentDetail({ student }: { student: Student }) {
         </div>
       </div>
       <div className="flex flex-row gap-5 items-center pb-5">
-        <Button variant="default">Email Student</Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="default">Email Student</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Email Student</DialogTitle>
+            <DialogDescription>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    To
+                  </label>
+                  <input
+                    type="email"
+                    value={student.preferredContact}
+                    readOnly
+                    className="w-full border border-gray-300 rounded px-3 py-2 bg-gray-100 text-gray-700"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Message
+                  </label>
+                  <textarea
+                    className="w-full border border-gray-300 rounded px-3 py-2 min-h-[100px]"
+                    placeholder={`Write your message to ${student.name}...`}
+                  />
+                </div>
+                <div className="flex justify-end gap-2">
+                  <DialogClose asChild>
+                    <Button variant="outline" type="button">
+                      Cancel
+                    </Button>
+                  </DialogClose>
+                  <Button type="submit" variant="default">
+                    Send
+                  </Button>
+                </div>
+              </form>
+            </DialogDescription>
+          </DialogContent>
+        </Dialog>
         <Button variant="outline">Create Log Entry</Button>
       </div>
       <hr />
