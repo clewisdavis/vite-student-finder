@@ -12,7 +12,7 @@ import {
   DialogClose,
 } from '@/components/ui/dialog';
 
-// Updated Student type to include courses
+// Updated Student type to include email
 interface Student {
   name: string;
   age: number;
@@ -23,6 +23,7 @@ interface Student {
   preferredContact: string;
   location: string;
   courses: string[]; // Array of course codes
+  email: string; // New email field
 }
 
 // Fake data for StudentCard component
@@ -37,6 +38,7 @@ const students: Student[] = [
     preferredContact: '910-326-3567',
     location: 'Durham, NC',
     courses: ['BIO101', 'MATH101', 'HIST101'],
+    email: 'alice.johnson@springfieldhigh.com',
   },
   {
     name: 'Bob Smith',
@@ -48,6 +50,7 @@ const students: Student[] = [
     preferredContact: '919-555-1234',
     location: 'Raleigh, NC',
     courses: ['CHEM201', 'MATH201', 'ENG201'],
+    email: 'bob.smith@apexhigh.com',
   },
   {
     name: 'Charlie Brown',
@@ -59,6 +62,7 @@ const students: Student[] = [
     preferredContact: '984-123-4567',
     location: 'Charlotte, NC',
     courses: ['PHYS301', 'MATH301', 'ENG301'],
+    email: 'charlie.brown@hollygrovehigh.com',
   },
   {
     name: 'Diana Prince',
@@ -70,6 +74,7 @@ const students: Student[] = [
     preferredContact: '910-987-6543',
     location: 'Greensboro, NC',
     courses: ['BIO401', 'MATH401', 'ENG401'],
+    email: 'diana.prince@springfieldhigh.com',
   },
   {
     name: 'Ethan Hunt',
@@ -81,6 +86,7 @@ const students: Student[] = [
     preferredContact: '919-222-3333',
     location: 'Wilmington, NC',
     courses: ['BIO101', 'ART101', 'HE101'],
+    email: 'ethan.hunt@apexhigh.com',
   },
   {
     name: 'Fiona Gallagher',
@@ -92,6 +98,7 @@ const students: Student[] = [
     preferredContact: '984-444-5555',
     location: 'Asheville, NC',
     courses: ['CHEM201', 'ENG202', 'SPAN101'],
+    email: 'fiona.gallagher@hollygrovehigh.com',
   },
   {
     name: 'George Weasley',
@@ -103,6 +110,7 @@ const students: Student[] = [
     preferredContact: '910-666-7777',
     location: 'Cary, NC',
     courses: ['PHYS301', 'CS101', 'SPAN201'],
+    email: 'george.weasley@springfieldhigh.com',
   },
   {
     name: 'Hannah Montana',
@@ -114,6 +122,7 @@ const students: Student[] = [
     preferredContact: '919-888-9999',
     location: 'Chapel Hill, NC',
     courses: ['BIO401', 'MATH401', 'CS401'],
+    email: 'hannah.montana@apexhigh.com',
   },
   {
     name: 'Ian Malcolm',
@@ -125,6 +134,7 @@ const students: Student[] = [
     preferredContact: '984-000-1111',
     location: 'Fayetteville, NC',
     courses: ['BIO101', 'MATH101', 'HIST101'],
+    email: 'ian.malcolm@hollygrovehigh.com',
   },
   {
     name: 'Jessica Jones',
@@ -136,6 +146,7 @@ const students: Student[] = [
     preferredContact: '910-222-3333',
     location: 'High Point, NC',
     courses: ['CHEM201', 'ENG202', 'FR101'],
+    email: 'jessica.jones@springfieldhigh.com',
   },
 ];
 
@@ -318,7 +329,7 @@ function StudentDetail({ student }: { student: Student }) {
                   </label>
                   <input
                     type="email"
-                    value={student.preferredContact}
+                    value={student.email} // Updated to use the email field
                     readOnly
                     className="w-full border border-gray-300 rounded px-3 py-2 bg-gray-100 text-gray-700"
                   />
